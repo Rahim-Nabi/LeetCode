@@ -5,7 +5,7 @@ class Solution:
         hi = 0
         sett = set()
         n = len(s)
-        if n < 1:
+        if n == 0:
             return 0
 
         for hi in range(n):
