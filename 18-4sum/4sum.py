@@ -2,8 +2,6 @@ class Solution:
     def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
         n = len(nums)
         nums.sort()
-        lo, hi = 0, n - 1
-        s1 = s2 = s = 0
         res = []
         for i in range(n -3):
             if i > 0 and nums[i] == nums [i - 1]:
