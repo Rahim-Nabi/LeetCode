@@ -1,27 +1,37 @@
 class Solution:
     def totalNumbers(self, digits: List[int]) -> int:
+        freq = [0] * 10
+
+        for d in digits:
+            freq[d] += 1
+        
         count = 0
+        n = len(digits)
 
-        for num in range(100, 1000):
-            if num % 2 != 0:
-                continue
-            
-            a = num // 100
-            b = (num // 10) % 10
-            c = num % 10
+        for a in range(1, 10):
+            for b in range(10):
+                for c in range(0, 10, 2):
+                    if freq[a] == 0:
+                        continue
+                    
+                    if freq[b] == 0:
+                        continue
+                    
+                    if freq[c] == 0:
+                        continue
 
-            temp = digits.copy()
-            if a in temp:
-                temp.remove(a)
-            else:
-                continue
-            
-            if b in temp:
-                temp.remove(b)
-            else:
-                continue
-            
-            if c in temp:
-                count += 1
-            
+                    if a == b == c:
+                        if freq[a] < 3:
+                            continue
+                    elif a == b:
+                        if freq[a] < 2:
+                            continue
+                    elif a == c:
+                        if freq[a] < 2:
+                            continue
+                    
+                    elif b == c:
+                        if freq[b] < 2:
+                            continue
+                    count += 1
         return count
